@@ -26,8 +26,7 @@
 					</div>
 				</div>
 				<div class="parameter__slider">
-					<input type="range" id="tank-volume-range"
-					value="0" class="input-range">
+					<input type="range" id="tank-volume-range">
 				</div>
 				<div class="parameter__footer">
 					<div class="text__left">0</div>
@@ -35,18 +34,17 @@
 				</div>
 			</div>
 
-			<div class="parameters__wrapper level-gauge-remainder-class">
+			<div class="parameters__wrapper tank-level-class">
 				<div class="parameter__header">
 					<div class="parameter-header__title">Показания уровнемера остаток, %</div>
 					<div class="parameter-header__input">
-						<button class="btn-input__left" onclick=""></button>
-						<input type="number" id="level-gauge-remainder" value="10">
-						<button class="btn-input__right" onclick=""></button>
+						<button class="btn-input__left"></button>
+						<input id="tank-level">
+						<button class="btn-input__right"></button>
 					</div>
 				</div>
 				<div class="parameter__slider">
-					<input type="range" min="0" max="85" id="level-gauge-remainder-range"
-					value="0">
+					<input type="range" id="tank-level-range">
 				</div>
 				<div class="parameter__footer">
 					<div class="text__left">0</div>
@@ -59,7 +57,7 @@
 					<div class="parameter-header__title">Количество заправляемого газа, л</div>
 					<div class="parameter-header__input">
 						<button class="btn-input__left"></button>
-						<input type="number" id="amount-gas">
+						<input id="amount-gas">
 						<button class="btn-input__right"></button>
 					</div>
 				</div>
