@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calc</title>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+	<section class="calculator">
+		<div class="calculator__parameters">
+			<div class="parameters__inner">
+				<div class="parameters__title">Стоимость заправки от 20,5 руб.</div>
+				<div class="parameters__text">за литр газа с доставкой</div>
+			</div>
+			
+			<div class="parameters__wrapper tank-volume-class">
+				<div class="parameter__header">
+					<div class="parameter-header__title">Объем газгольдера, л</div>
+					<div class="parameter-header__input">
+						<button class="btn-input__left"></button>
+						<input  id="tank-volume">
+						<button class="btn-input__right"></button>
+					</div>
+				</div>
+				<div class="parameter__slider">
+					<input type="range" id="tank-volume-range"
+					value="0" class="input-range">
+				</div>
+				<div class="parameter__footer">
+					<div class="text__left">0</div>
+					<div class="text__right">10000</div>
+				</div>
+			</div>
+
+			<div class="parameters__wrapper level-gauge-remainder-class">
+				<div class="parameter__header">
+					<div class="parameter-header__title">Показания уровнемера остаток, %</div>
+					<div class="parameter-header__input">
+						<button class="btn-input__left" onclick=""></button>
+						<input type="number" id="level-gauge-remainder" value="10">
+						<button class="btn-input__right" onclick=""></button>
+					</div>
+				</div>
+				<div class="parameter__slider">
+					<input type="range" min="0" max="85" id="level-gauge-remainder-range"
+					value="0">
+				</div>
+				<div class="parameter__footer">
+					<div class="text__left">0</div>
+					<div class="text__right">85</div>
+				</div>
+			</div>
+
+			<div class="parameters__wrapper amount-gas-class">
+				<div class="parameter__header">
+					<div class="parameter-header__title">Количество заправляемого газа, л</div>
+					<div class="parameter-header__input">
+						<button class="btn-input__left"></button>
+						<input type="number" id="amount-gas">
+						<button class="btn-input__right"></button>
+					</div>
+				</div>
+				<div class="parameter__slider">
+					<input type="range" min="0" id="amount-gas-range">
+				</div>
+
+			</div>
+			<div class="parameters__wrapper">
+				<div class="parameter__header">
+					<div class="parameter-header__title">Удаленность от МКАД, км</div>
+					<div class="parameter-header__input">
+						<button class="btn-input__left" onclick=""></button>
+						<input type="number" id="distance-from-MKAD" value="0">
+						<button class="btn-input__right" onclick=""></button>
+					</div>
+				</div>
+				<div class="parameter__slider">
+					<input type="range" min="0" id="distance-from-MKAD-range" value="0" class="input-range">
+				</div>
+			</div>
+		</div>
+		<div class="calculator__result">
+			<div class="result__inner">
+				<img src="" alt="">
+			</div>
+			<div class="result__wrapper">
+				<div class="result__title">Стоимость заправки газгольдера:</div>
+				<div class="result__input">
+					<input type="number" id="refueling-cost" value="0">
+				</div>
+				<div class="result__btn">
+					<button>Заказать заправку</button>
+				</div>
+			</div>
+		</div>
+		<script src="./main.js"></script>
+	</section>
+
+</html>
