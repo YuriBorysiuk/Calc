@@ -5,7 +5,7 @@ window.addEventListener('load', init)
 function init() {
 	//todo fetch params from admin
 
-	//init fields
+	
 	const inputTankVolume = document.querySelector('.tank-volume-class .parameter__header input')
 	const rangeTankVolume = document.querySelector('.tank-volume-class .parameter__slider input')
 	
@@ -15,14 +15,27 @@ function init() {
 	const inputAmountGas = document.querySelector('.amount-gas-class .parameter__header input')
 	const rangeAmountGas = document.querySelector('.amount-gas-class .parameter__slider input')
 	
+	const inputDistance = document.querySelector('.distance-class .parameter__header input')
+	const rangeDistance = document.querySelector('.distance-class .parameter__slider input')
+
 	inputTankVolume.setAttribute('value', 2000)
 	rangeTankVolume.setAttribute('min', 2000)
 	rangeTankVolume.setAttribute('max', 20000)
 	rangeTankVolume.setAttribute('step', 500)
+	rangeTankVolume.setAttribute('type','range')
 
-	inputTankLevel.setAttribute('value', 20)
+	inputTankLevel.setAttribute('value', 0)
 	rangeTankLevel.setAttribute('min', 0)
 	rangeTankLevel.setAttribute('max', 85)
+	rangeTankLevel.setAttribute('type', 'range')
+
+	rangeAmountGas.setAttribute('min', 0)
+	rangeAmountGas.setAttribute('type', 'range')
+
+	inputDistance.setAttribute('value', 0)
+	rangeDistance.setAttribute('min', 0)
+	rangeDistance.setAttribute('max', 2000)
+	rangeDistance.setAttribute('type', 'range')
 
 	const tankVolume = document.getElementById('tank-volume').value
 	const tankLevel = document.getElementById('tank-level').value
@@ -93,10 +106,8 @@ class CalcInput {
 function calculateGasCharged() {
 	const inputAmountGas = document.querySelector('.amount-gas-class .parameter__header input')
 	const rangeAmountGas = document.querySelector('.amount-gas-class .parameter__slider input')
-
 	const tankVolume = document.getElementById('tank-volume').value
 	const tankLevel = document.getElementById('tank-level').value
-
 	const calculatedValue = tankVolume * tankLevel / 100
 
 	rangeAmountGas.setAttribute('max', calculatedValue)
@@ -113,10 +124,9 @@ function calculateTankLevel() {
 
 	tankLevel.value =(parseInt(inputAmountGas.value) / parseInt(tankVolume.value) * 100).toFixed(2)
 	tankLevelRange.value = parseInt(inputAmountGas.value) / parseInt(tankVolume.value) * 100
-
-
+	
 	const calculatedValue = parseInt(tankVolume.value) * parseInt(tankLevel.value) / 100
-
+	
 	rangeAmountGas.setAttribute('max', calculatedValue)
 
 }
@@ -124,4 +134,4 @@ function calculateTankLevel() {
 new CalcInput('.tank-volume-class')
 new CalcInput('.tank-level-class', calculateGasCharged)
 new CalcInput('.amount-gas-class', calculateTankLevel)
-//todo init distance-from-MKAD
+new CalcInput('.distance-class')
