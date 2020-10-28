@@ -1,11 +1,14 @@
-/* Знаяения из текстовых импутов */
+
+//про переменные
+// про -+500
+// про specificHandler
+//доделать в первом инпуте при нажатии на кнопку выход за мин
 
 window.addEventListener('load', init)
 
 function init() {
 	//todo fetch params from admin
 
-	
 	const inputTankVolume = document.querySelector('.tank-volume-class .parameter__header input')
 	const rangeTankVolume = document.querySelector('.tank-volume-class .parameter__slider input')
 	
@@ -18,29 +21,27 @@ function init() {
 	const inputDistance = document.querySelector('.distance-class .parameter__header input')
 	const rangeDistance = document.querySelector('.distance-class .parameter__slider input')
 
-	inputTankVolume.setAttribute('value', 2000)
-	rangeTankVolume.setAttribute('min', 2000)
-	rangeTankVolume.setAttribute('max', 20000)
-	rangeTankVolume.setAttribute('step', 500)
-	rangeTankVolume.setAttribute('type','range')
+	function setAttributes(el, options) {
+		Object.keys(options).forEach(function(attr) {
+			el.setAttribute(attr, options[attr]);
+		})
+	}
 
-	inputTankLevel.setAttribute('value', 0)
-	rangeTankLevel.setAttribute('min', 0)
-	rangeTankLevel.setAttribute('max', 85)
-	rangeTankLevel.setAttribute('type', 'range')
+	setAttributes(inputTankVolume, {'value': 2000})
+	setAttributes(rangeTankVolume, {'min': 2000, 'max': 20000, 'step': 500, 'type': 'range'})
 
-	rangeAmountGas.setAttribute('min', 0)
-	rangeAmountGas.setAttribute('type', 'range')
+	setAttributes(inputTankLevel, {'value': 0})
+	setAttributes(rangeTankLevel, {'value': 0, 'min': 0, 'max': 85, 'type': 'range'})
 
-	inputDistance.setAttribute('value', 0)
-	rangeDistance.setAttribute('min', 0)
-	rangeDistance.setAttribute('max', 2000)
-	rangeDistance.setAttribute('type', 'range')
+	setAttributes(rangeAmountGas, {'min': 0, 'type': 'range'})
 
+	setAttributes(inputDistance, {'value': 0})
+	setAttributes(rangeDistance, {'value': 0, 'min': 0, 'max': 2000, 'type': 'range'})
+	
 	const tankVolume = document.getElementById('tank-volume').value
 	const tankLevel = document.getElementById('tank-level').value
 	const calculatedValue = tankVolume * tankLevel / 100
-
+	
 	rangeAmountGas.setAttribute('max', calculatedValue)
 	inputAmountGas.value = calculatedValue
 	rangeAmountGas.value = calculatedValue
@@ -90,6 +91,7 @@ class CalcInput {
 			this.range.value = this.range.getAttribute('max')
 		}
 	}
+	
 	handleInputChange() {
 		const value = parseInt(this.input.value)
 		if (value && value >= 0 && value <= this.range.getAttribute('max')) {
@@ -129,6 +131,22 @@ function calculateTankLevel() {
 	
 	rangeAmountGas.setAttribute('max', calculatedValue)
 
+}
+
+function calculateDistance () {
+	const distance = document.getElementById('distance').value
+	const distanceFirstLevel = 500
+	const distanceSecondLevel = 1000
+	const coeffDistance = 0
+console.log('distance')
+	if (distance <= distanceFirstLevel) {
+		coeffDistance = 1
+	} else if (distance <= distanceSecondLevel && distance >= distanceFirstLevel) {
+		coeffDistance = 1,5
+	} else {
+		coeffDistance = 2
+	}
+console.log('coeffDistance')
 }
 
 new CalcInput('.tank-volume-class')
