@@ -2,7 +2,7 @@
 //про переменные
 // про -+500
 // про specificHandler
-//доделать в первом инпуте при нажатии на кнопку выход за мин
+
 
 window.addEventListener('load', init)
 
@@ -20,6 +20,8 @@ function init() {
 	
 	const inputDistance = document.querySelector('.distance-class .parameter__header input')
 	const rangeDistance = document.querySelector('.distance-class .parameter__slider input')
+
+	const inputTotalCost = document.querySelector('.result-class .result__input input')
 
 	function setAttributes(el, options) {
 		Object.keys(options).forEach(function(attr) {
@@ -133,25 +135,34 @@ function calculateTankLevel() {
 
 }
 
-// // function calculateDistance () {
-// 	const distance = document.getElementById('distance').value
-// 	const distanceFirstLevel = 500
-// 	const distanceSecondLevel = 1000
-// 	const coeffDistance = 0
+function calculateDistance() {
+	const distance = document.getElementById('distance').value
+	const distanceFirstLevel = 500
+	const distanceSecondLevel = 1000
+	const coeffDistance = 0
+	if (distance <= distanceFirstLevel) {
+		coeffDistance = 1
+	} else if (distance <= distanceSecondLevel && distance >= distanceFirstLevel) {
+		coeffDistance = 1.5
+	} else {
+		coeffDistance = 2
+	}
+	console.log('coeffDistance')
+}
+// new function(calculateDistance)
 
-// 	if (distance <= distanceFirstLevel) {
-// 		coeffDistance = 1
-// 	} else if (distance <= distanceSecondLevel && distance >= distanceFirstLevel) {
-// 		coeffDistance = 1,5
-// 	} else {
-// 		coeffDistance = 2
-// 	}
-
-// // }
-
+function totalCost () {
+	const cost = 20
+	const inputAmountGas = document.getElementById('amount-gas')
+	const coeffDistance = 1.5
+	const totalCost = cost * inputAmountGas * coeffDistance
+	
+	inputTotalCost.value = totalCost
+}
 
 
 new CalcInput('.tank-volume-class')
 new CalcInput('.tank-level-class', calculateGasCharged)
 new CalcInput('.amount-gas-class', calculateTankLevel)
 new CalcInput('.distance-class')
+new CalcInput('result-class', totalCost)
