@@ -77,7 +77,7 @@ class CalcInput {
 	}
 
 	handleMinusClick() {
-		if (parseInt(this.input.value) > 0) {
+		if (parseInt(this.input.value) > this.range.getAttribute('min')) {
 			this.input.value = parseInt(this.input.value) - 1
 			this.range.value = this.input.value
 		}
@@ -133,21 +133,23 @@ function calculateTankLevel() {
 
 }
 
-function calculateDistance () {
-	const distance = document.getElementById('distance').value
-	const distanceFirstLevel = 500
-	const distanceSecondLevel = 1000
-	const coeffDistance = 0
-console.log('distance')
-	if (distance <= distanceFirstLevel) {
-		coeffDistance = 1
-	} else if (distance <= distanceSecondLevel && distance >= distanceFirstLevel) {
-		coeffDistance = 1,5
-	} else {
-		coeffDistance = 2
-	}
-console.log('coeffDistance')
-}
+// // function calculateDistance () {
+// 	const distance = document.getElementById('distance').value
+// 	const distanceFirstLevel = 500
+// 	const distanceSecondLevel = 1000
+// 	const coeffDistance = 0
+
+// 	if (distance <= distanceFirstLevel) {
+// 		coeffDistance = 1
+// 	} else if (distance <= distanceSecondLevel && distance >= distanceFirstLevel) {
+// 		coeffDistance = 1,5
+// 	} else {
+// 		coeffDistance = 2
+// 	}
+
+// // }
+
+
 
 new CalcInput('.tank-volume-class')
 new CalcInput('.tank-level-class', calculateGasCharged)
