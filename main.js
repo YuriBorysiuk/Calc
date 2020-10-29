@@ -1,14 +1,10 @@
 
-//про переменные
-// про -+500
-// про specificHandler
-const inputTotalCost = document.querySelector('.result-class .result__input input')
+const COST = 20
 
 window.addEventListener('load', init)
 
 function init() {
-	//todo fetch params from admin
-
+	
 	const inputTankVolume = document.querySelector('.tank-volume-class .parameter__header input')
 	const rangeTankVolume = document.querySelector('.tank-volume-class .parameter__slider input')
 	
@@ -45,16 +41,16 @@ function init() {
 	rangeAmountGas.setAttribute('max', calculatedValue)
 	inputAmountGas.value = calculatedValue
 	rangeAmountGas.value = calculatedValue
-
 }
 
 class CalcInput {
-	constructor(selector, specificHandler) {
+	constructor(selector, specificHandler, addValue = 1) {
 		this.input = document.querySelector(`${selector} .parameter__header input`)
 		this.range = document.querySelector(`${selector} .parameter__slider input`)
 		this.minusButtton = document.querySelector(`${selector} .parameter__header .btn-input__left`)
 		this.plusButton = document.querySelector(`${selector} .parameter__header .btn-input__right`)
-
+		this.addValue = addValue
+		
 		this.handleInputChange = this.handleInputChange.bind(this)
 		this.handleMinusClick = this.handleMinusClick.bind(this)
 		this.handlePlusClick = this.handlePlusClick.bind(this)
@@ -78,13 +74,13 @@ class CalcInput {
 
 	handleMinusClick() {
 		if (parseInt(this.input.value) > this.range.getAttribute('min')) {
-			this.input.value = parseInt(this.input.value) - 1
+			this.input.value = parseInt(this.input.value) - this.addValue
 			this.range.value = this.input.value
 		}
 	}
 
 	handlePlusClick() {
-		this.input.value = parseInt(this.input.value) + 1
+		this.input.value = parseInt(this.input.value) + this.addValue
 		this.range.value = this.input.value
 		if (this.range.getAttribute('max') && parseInt(this.input.value) > this.range.getAttribute('max')) {
 			this.input.value = this.range.getAttribute('max')
@@ -101,8 +97,6 @@ class CalcInput {
 			this.input.classList.add('error')
 		}
 	}
-
-
 }
 
 function calculateGasCharged() {
@@ -130,7 +124,6 @@ function calculateTankLevel() {
 	const calculatedValue = parseInt(tankVolume.value) * parseInt(tankLevel.value) / 100
 	
 	rangeAmountGas.setAttribute('max', calculatedValue)
-
 }
 
 function calculateDistance() {
@@ -148,20 +141,16 @@ function calculateDistance() {
 	return coeffDistance 
 }
 
-calculateDistance ()
-
-function totalCost () {
-	const cost = 20
+function calculateTotalCost () {
+	const inputTotalCost = document.querySelector('.result-class .result__input input')
 	const inputAmountGas = document.getElementById('amount-gas')
 	const coeffDistance = calculateDistance()
-	const totalCost = cost * inputAmountGas * coeffDistance
-	
-	inputTotalCost.value = totalCost
+		
+	inputTotalCost.value = COST * inputAmountGas.value * coeffDistance
 }
 
-
-new CalcInput('.tank-volume-class')
+new CalcInput('.tank-volume-class', null, 500)
 new CalcInput('.tank-level-class', calculateGasCharged)
 new CalcInput('.amount-gas-class', calculateTankLevel)
-new CalcInput('.distance-class', calculateDistance)
-new CalcInput('result-class', totalCost)
+new CalcInput('.distance-class', calculateTotalCost)
+
