@@ -6,96 +6,100 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Calc</title>
 	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/fonts.css">
 	<link rel="stylesheet" href="css/main.css">
+	
 </head>
 
 <body>
 	<section class="calculator">
-		<div class="calculator__parameters">
-			<div class="parameters__inner">
-				<div class="parameters__title">Стоимость заправки от 20,5 руб.</div>
-				<div class="parameters__text">за литр газа с доставкой</div>
-			</div>
-			
-			<div class="parameters__wrapper tank-volume-class">
-				<div class="parameter__header">
-					<div class="parameter-header__title">Объем газгольдера, л</div>
-					<div class="parameter-header__input">
-						<button class="btn-input__left"></button>
-						<input  id="tank-volume">
-						<button class="btn-input__right"></button>
+		<div class="calculator__title">
+			<p class="first-line">Расчитайте стоимость заправки</p>
+			<p class="second-line">вашего газгольдера</p>
+		</div>
+		<div class="calculator__inner">
+			<div class="calculator__parameters">
+					<div class="parameters__inner">
+						<div class="parameters__title">Стоимость заправки от 20,5 руб.</div>
+						<div class="parameters__text">за литр газа с доставкой</div>
 					</div>
-				</div>
-				<div class="parameter__slider">
-					<input type="range" id="tank-volume-range">
-				</div>
-				<div class="parameter__footer">
-					<div class="text__left">0</div>
-					<div class="text__right">10000</div>
-				</div>
-			</div>
-
-			<div class="parameters__wrapper tank-level-class">
-				<div class="parameter__header">
-					<div class="parameter-header__title">Показания уровнемера остаток, %</div>
-					<div class="parameter-header__input">
-						<button class="btn-input__left"></button>
-						<input id="tank-level">
-						<button class="btn-input__right"></button>
+					<div class="parameters__wrapper tank-volume-class">
+						<div class="parameter__header">
+							<div class="parameter-header__title">Объем газгольдера, л</div>
+							<div class="parameter-header__input">
+								<button class="btn-input__left"></button>
+								<input  id="tank-volume">
+								<button class="btn-input__right"></button>
+							</div>
+						</div>
+						<div class="parameter__slider">
+							<input type="range" id="tank-volume-range">
+						</div>
+						<div class="parameter__footer">
+							<div class="text__left">0</div>
+							<div class="text__right">10000</div>
+						</div>
 					</div>
-				</div>
-				<div class="parameter__slider">
-					<input type="range" id="tank-level-range">
-				</div>
-				<div class="parameter__footer">
-					<div class="text__left">0</div>
-					<div class="text__right">85</div>
-				</div>
-			</div>
-
-			<div class="parameters__wrapper amount-gas-class">
-				<div class="parameter__header">
-					<div class="parameter-header__title">Количество заправляемого газа, л</div>
-					<div class="parameter-header__input">
-						<button class="btn-input__left"></button>
-						<input id="amount-gas">
-						<button class="btn-input__right"></button>
+					<div class="parameters__wrapper tank-level-class">
+						<div class="parameter__header">
+							<div class="parameter-header__title">Показания уровнемера остаток, %</div>
+							<div class="parameter-header__input">
+								<button class="btn-input__left"></button>
+								<input id="tank-level">
+								<button class="btn-input__right"></button>
+							</div>
+						</div>
+						<div class="parameter__slider">
+							<input type="range" id="tank-level-range">
+						</div>
+						<div class="parameter__footer">
+							<div class="text__left">0</div>
+							<div class="text__right">85</div>
+						</div>
 					</div>
-				</div>
-				<div class="parameter__slider">
-					<input id="amount-gas-range">
-				</div>
-
-			</div>
-			<div class="parameters__wrapper distance-class">
-				<div class="parameter__header">
-					<div class="parameter-header__title">Удаленность от МКАД, км</div>
-					<div class="parameter-header__input">
-						<button class="btn-input__left"></button>
-						<input id="distance">
-						<button class="btn-input__right"></button>
+					<div class="parameters__wrapper amount-gas-class">
+						<div class="parameter__header">
+							<div class="parameter-header__title">Количество заправляемого газа, л</div>
+							<div class="parameter-header__input">
+								<button class="btn-input__left"></button>
+								<input id="amount-gas">
+								<button class="btn-input__right"></button>
+							</div>
+						</div>
+						<div class="parameter__slider">
+							<input id="amount-gas-range">
+						</div>
 					</div>
-				</div>
-				<div class="parameter__slider">
-					<input id="distance-range">
-				</div>
+					<div class="parameters__wrapper distance-class">
+						<div class="parameter__header">
+							<div class="parameter-header__title">Удаленность от МКАД, км</div>
+							<div class="parameter-header__input">
+								<button class="btn-input__left"></button>
+								<input id="distance">
+								<button class="btn-input__right"></button>
+							</div>
+						</div>
+						<div class="parameter__slider">
+							<input id="distance-range">
+						</div>
+					</div>
+			</div>
+			<div class="calculator__result">
+					<div class="result__inner">
+						<img src="" alt="">
+					</div>
+					<div class="result__wrapper result-class">
+						<div class="result__title">Стоимость заправки газгольдера:</div>
+						<div class="result__input">
+							<input type="text" id="result-cost" value="0">
+						</div>
+						<div class="result__btn">
+							<button>Заказать заправку</button>
+						</div>
+					</div>
 			</div>
 		</div>
-		<div class="calculator__result">
-			<div class="result__inner">
-				<img src="" alt="">
-			</div>
-			<div class="result__wrapper result-class">
-				<div class="result__title">Стоимость заправки газгольдера:</div>
-				<div class="result__input">
-					<input type="text" id="result-cost" value="0">
-				</div>
-				<div class="result__btn">
-					<button>Заказать заправку</button>
-				</div>
-			</div>
-		</div>
-		<script src="./main.js"></script>
 	</section>
-
+	<script src="./main.js"></script>
+</body>
 </html>
