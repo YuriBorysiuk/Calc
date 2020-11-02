@@ -146,7 +146,7 @@ function calculateTotalCost () {
 	const inputAmountGas = document.getElementById('amount-gas')
 	const coeffDistance = calculateDistance()
 		
-	inputTotalCost.value = COST * inputAmountGas.value * coeffDistance
+	inputTotalCost.value = (COST * inputAmountGas.value * coeffDistance) + ' руб.'
 }
 
 new CalcInput('.tank-volume-class', null, 500)
