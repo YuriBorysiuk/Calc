@@ -48,7 +48,7 @@ class CalcInput {
 		this.input = document.querySelector(`${selector} .parameter__header input`)
 		this.range = document.querySelector(`${selector} .parameter__slider input`)
 		this.minusButtton = document.querySelector(`${selector} .parameter__header .btn-input__left`)
-		this.plusButton = document.querySelector(`${selector} .parameter__header .btn-input__right`)
+		this.plusButton = document.querySelector(`${selector} .wrapper .current-value`)
 		this.addValue = addValue
 		
 		this.handleInputChange = this.handleInputChange.bind(this)
