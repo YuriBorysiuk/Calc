@@ -1,0 +1,8 @@
+#PhotoShop
+*.psd
+
+# VSCode
+*.vscode
+
+# Папки
+/1_Заверстать

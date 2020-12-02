@@ -47,10 +47,11 @@ class CalcInput {
 	constructor(selector, specificHandler, addValue = 1) {
 		this.input = document.querySelector(`${selector} .parameter__header input`)
 		this.range = document.querySelector(`${selector} .parameter__slider input`)
+		this.style = document.getElementsByClassName('current-value')[0]
 		this.minusButtton = document.querySelector(`${selector} .parameter__header .btn-input__left`)
-		this.plusButton = document.querySelector(`${selector} .wrapper .current-value`)
+		this.plusButton = document.querySelector(`${selector} .parameter__header .btn-input__right`)
 		this.addValue = addValue
-		
+		console.log('style', this.style)
 		this.handleInputChange = this.handleInputChange.bind(this)
 		this.handleMinusClick = this.handleMinusClick.bind(this)
 		this.handlePlusClick = this.handlePlusClick.bind(this)
@@ -70,6 +71,7 @@ class CalcInput {
 
 	handleRangeChange() {
 		this.input.value = this.range.value;
+		this.style.style = `height: ${this.range.value}%`
 	}
 
 	handleMinusClick() {
